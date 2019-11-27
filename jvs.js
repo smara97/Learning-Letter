@@ -44,7 +44,7 @@ bnt.addEventListener("click",function(e){
 					store.setItem(store.length+1,fullDate);
 
 
-					path="/home/ahmed/Desktop/FCI/Images/"+e.target.value+".png";
+					path="Images/"+e.target.value+".png";
 					var img=document.createElement("img");
 					img.src=path;
 					img.setAttribute('class','imgs');

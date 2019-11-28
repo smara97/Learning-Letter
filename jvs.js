@@ -5,18 +5,27 @@ var myvar = setInterval(myTimer, 5000);
 var store=window.localStorage;
 
 window.addEventListener ('load',function(e){
-store.setItem(store.length+1,new template(e));
+	
+var lis=[];
+lis.push(store.getItem('Load'));
+lis.push(new template(e));
+store.setItem("Load",lis);
 });
 
 window.addEventListener ('unload',function(e){
-store.setItem(store.length+1,new template(e));
+var lis=[];
+lis.push(store.getItem('Unload'));
+lis.push(new template(e));
+store.setItem("Unload",lis);
 });
 
 var bnt=document.getElementsByClassName("bnt")[0];
 bnt.addEventListener("click",function(e){
 	
-	store.setItem(store.length+1,new template(e));
-
+	var lis=[];
+	lis.push(store.getItem('Generate'));
+	lis.push(new template(e));
+	store.setItem("Generate",lis);
 	var txt=document.getElementsByClassName("txt")[0];
 	if(correct(txt.value)){
 		var divsb=document.getElementsByTagName("div");
@@ -34,7 +43,10 @@ bnt.addEventListener("click",function(e){
 		for(var i=0;i<elms.length;i++){
 				tx=elms[i].value;
 				elms[i].addEventListener('click',function(e){
-					store.setItem(store.length+1,new template(e));
+					var lis=[];
+					lis.push(store.getItem('Character'));
+					lis.push(new template(e));
+					store.setItem("Character",lis);
 
 
 					path="/home/ahmed/Desktop/FCI/Images/"+e.target.value+".png";

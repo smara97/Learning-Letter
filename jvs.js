@@ -6,19 +6,19 @@ var store=window.localStorage;
 
 window.addEventListener ('load',function(e){
 var DT=new Date();
-var fullDate=String(e.type)+'   '+String(e.target)+'  Open  website on Date '+String(DT.getDate())+'-'+String(DT.getMonth()+1)+'-'+String(DT.getFullYear())+'	at Time '+String(DT.getHours())+':'+String(DT.getMinutes())+':'+String(DT.getSeconds());
+var fullDate=String(e.type)+'   '+String(e.target)+String(DT);
 store.setItem(store.length+1,fullDate);
 });
 window.addEventListener ('unload',function(e){
 var DT=new Date();
-var fullDate=String(e.type)+'   '+String(e.target)+'Unload website on Date '+String(DT.getDate())+'-'+String(DT.getMonth()+1)+'-'+String(DT.getFullYear())+'		Time '+String(DT.getHours())+':'+String(DT.getMinutes())+':'+String(DT.getSeconds());
+var fullDate=String(e.type)+'   '+String(e.target)+String(DT);
 store.setItem(store.length+1,fullDate);
 });
 
 var bnt=document.getElementsByClassName("bnt")[0];
 bnt.addEventListener("click",function(e){
 	var DT=new Date();
-	var fullDate=String(e.type)+'   '+String(e.target)+'	Click Generate Button on Date '+String(DT.getDate())+'-'+String(DT.getMonth()+1)+'-'+String(DT.getFullYear())+'		Time '+String(DT.getHours())+':'+String(DT.getMinutes())+':'+String(DT.getSeconds());
+	var fullDate=String(e.type)+'   '+String(e.target)+' Click Generate Button '+String(DT);
 	store.setItem(store.length+1,fullDate);
 
 
@@ -40,11 +40,11 @@ bnt.addEventListener("click",function(e){
 				tx=elms[i].value;
 				elms[i].addEventListener('click',function(e){
 					var DT=new Date();
-					var fullDate=String(e.type)+'   '+String(e.target)+'	Click '+e.target.value+'	Letter Button Date '+String(DT.getDate())+'-'+String(DT.getMonth()+1)+'-'+String(DT.getFullYear())+'		Time '+String(DT.getHours())+':'+String(DT.getMinutes())+':'+String(DT.getSeconds());
+					var fullDate=String(e.type)+'   '+String(e.target)+'	Click '+e.target.value+'	Letter Button '+String(DT);
 					store.setItem(store.length+1,fullDate);
 
 
-					path="Images/"+e.target.value+".png";
+					path="/home/ahmed/Desktop/FCI/Images/"+e.target.value+".png";
 					var img=document.createElement("img");
 					img.src=path;
 					img.setAttribute('class','imgs');
@@ -71,8 +71,8 @@ function correct(content){
 	catch{
 		return false;
 	}
-	if(number >26)return false;
-	return true;
+	if(number >=1 && number<=26)return true;
+	return false;
 }
 
 function shuffle(arry){

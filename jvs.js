@@ -5,22 +5,17 @@ var myvar = setInterval(myTimer, 5000);
 var store=window.localStorage;
 
 window.addEventListener ('load',function(e){
-var DT=new Date();
-var fullDate=String(e.type)+'   '+String(e.target)+String(DT);
-store.setItem(store.length+1,fullDate);
+store.setItem(store.length+1,new template(e));
 });
+
 window.addEventListener ('unload',function(e){
-var DT=new Date();
-var fullDate=String(e.type)+'   '+String(e.target)+String(DT);
-store.setItem(store.length+1,fullDate);
+store.setItem(store.length+1,new template(e));
 });
 
 var bnt=document.getElementsByClassName("bnt")[0];
 bnt.addEventListener("click",function(e){
-	var DT=new Date();
-	var fullDate=String(e.type)+'   '+String(e.target)+' Click Generate Button '+String(DT);
-	store.setItem(store.length+1,fullDate);
-
+	
+	store.setItem(store.length+1,new template(e));
 
 	var txt=document.getElementsByClassName("txt")[0];
 	if(correct(txt.value)){
@@ -39,9 +34,7 @@ bnt.addEventListener("click",function(e){
 		for(var i=0;i<elms.length;i++){
 				tx=elms[i].value;
 				elms[i].addEventListener('click',function(e){
-					var DT=new Date();
-					var fullDate=String(e.type)+'   '+String(e.target)+'	Click '+e.target.value+'	Letter Button '+String(DT);
-					store.setItem(store.length+1,fullDate);
+					store.setItem(store.length+1,new template(e));
 
 
 					path="/home/ahmed/Desktop/FCI/Images/"+e.target.value+".png";
@@ -83,4 +76,10 @@ function shuffle(arry){
 function myTimer() {
 	window.localStorage.clear();
 	store=window.localStorage;
+}
+
+function template(e){
+	var DT=new Date();
+	this.target=e.target;this.type=e.type;this.event=DT;
+	this.fullDate=String(e.type)+'   '+String(e.target)+String(DT);
 }
